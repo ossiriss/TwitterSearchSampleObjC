@@ -1,0 +1,6 @@
+framework module TwitterSearchObjC {
+  umbrella header "TwitterSearchObjC-umbrella.h"
+
+  export *
+  module * { export * }
+}
