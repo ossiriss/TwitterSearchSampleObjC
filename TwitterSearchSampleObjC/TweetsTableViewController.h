@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TweetTableViewCell.h"
 
 @interface TweetsTableViewController : UITableViewController
 @property(readwrite, nonatomic) NSArray *tweets;

@@ -7,6 +7,7 @@
 //
 
 #import "TweetsTableViewController.h"
+@import TwitterSearchObjC;
 
 @interface TweetsTableViewController ()
 
@@ -18,6 +19,11 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,17 +50,29 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
+    TweetTableViewCell *cell = (TweetTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = _tweets[indexPath.row];
+    //cell.textLabel.text = [_tweets[indexPath.row] text];
+    [cell setTweet:_tweets[indexPath.row]];
     
     return cell;
 }
 
+/*-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *text = [_tweets[indexPath.row] text];
+    CGSize constraint = CGSizeMake(210, 20000.0f);
+    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    // constratins the size of the table row according to the text
+    
+    CGFloat height = MAX(size.height,60);
+    
+    return height + (15);
+}*/
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:nil
-                                 message:_tweets[indexPath.row]
+                                 message: [_tweets[indexPath.row] text]
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction

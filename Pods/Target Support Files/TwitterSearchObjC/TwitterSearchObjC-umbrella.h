@@ -11,6 +11,7 @@
 #endif
 
 #import "Api.h"
+#import "Tweet.h"
 
 FOUNDATION_EXPORT double TwitterSearchObjCVersionNumber;
 FOUNDATION_EXPORT const unsigned char TwitterSearchObjCVersionString[];

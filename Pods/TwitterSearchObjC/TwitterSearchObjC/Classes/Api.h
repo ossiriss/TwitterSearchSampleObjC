@@ -9,7 +9,7 @@
 #ifndef Api_h
 #define Api_h
 @interface Api : NSObject
-+(void)getTweetsArray:(NSString*)tag andCompletion:(void (^)(Boolean success, NSArray* _Nullable data, NSString* _Nullable error))completion;
++(void)getTweetsArray:(NSString*)tag andCompletion:(void (^)(Boolean success, NSArray* data, NSString* error))completion;
 
 @end
 
